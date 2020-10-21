@@ -21,4 +21,13 @@ public class IplAnalyserTest {
 		System.out.println(maxAvg);
 		Assert.assertEquals(83.2, maxAvg, 0.0);
 	}
+	
+	@Test
+	public void givenIPLFile_FindMaxStrikeRate() throws IplAnalyserException {
+		Path pathname = Paths.get(FILE_PATH_RUNS);
+		IplAnalyser iplLeagueAnalyser = new IplAnalyser(pathname);
+		double maximumStrikeRate = iplLeagueAnalyser.maximumStrikeRates();
+		System.out.println(maximumStrikeRate);
+		Assert.assertEquals(333.33, maximumStrikeRate, 0.0);
+	}
 }

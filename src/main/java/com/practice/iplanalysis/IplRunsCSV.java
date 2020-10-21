@@ -7,45 +7,45 @@ public class IplRunsCSV {
 
 	}
 
-	@CsvBindByName(column = "POS")
+	@CsvBindByName(column = "POS", required = true)
 	public int position;
 
-	@CsvBindByName(column = "PLAYER")
+	@CsvBindByName(column = "PLAYER", required = true)
 	public String player;
 
-	@CsvBindByName(column = "Mat")
+	@CsvBindByName(column = "Mat", required = true)
 	public int matches;
 
-	@CsvBindByName(column = "Inns")
+	@CsvBindByName(column = "Inns", required = true)
 	public int innings;
 
-	@CsvBindByName(column = "NO")
+	@CsvBindByName(column = "NO", required = true)
 	public int notOut;
 
-	@CsvBindByName(column = "Runs")
+	@CsvBindByName(column = "Runs", required = true)
 	public int runs;
 
-	@CsvBindByName(column = "HS")
+	@CsvBindByName(column = "HS", required = true)
 	public String highestScore;
 
-	@CsvBindByName(column = "Avg")
+	@CsvBindByName(column = "Avg", required = true)
 	public String average;
 
-	@CsvBindByName(column = "BF")
+	@CsvBindByName(column = "BF", required = true)
 	public int ballsFaced;
 
-	@CsvBindByName(column = "SR")
-	public double strikeRate;
+	@CsvBindByName(column = "SR", required = true)
+	public String strikeRate;
 
-	@CsvBindByName(column = "100")
+	@CsvBindByName(column = "100", required = true)
 	public int hundreds;
 
-	@CsvBindByName(column = "50")
+	@CsvBindByName(column = "50", required = true)
 	public int fifties;
 
-	@CsvBindByName(column = "4s")
+	@CsvBindByName(column = "4s", required = true)
 	public int fours;
 
-	@CsvBindByName(column = "6s")
+	@CsvBindByName(column = "6s", required = true)
 	public int sixes;
 }

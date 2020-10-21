@@ -6,7 +6,7 @@ public class IplAnalyserException extends Exception {
 		WRONG_PATH;
 	}
 	
-	ExceptionType type;
+	public ExceptionType type;
 	
 	public IplAnalyserException(String msg, ExceptionType type) {
 		super(msg);
