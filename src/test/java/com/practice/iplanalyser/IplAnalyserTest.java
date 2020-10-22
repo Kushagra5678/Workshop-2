@@ -62,4 +62,12 @@ public class IplAnalyserTest {
 		String player = iplAnalyser.playerWithBestSRAndAvg();
 		Assert.assertEquals("MS Dhoni", player);
 	}
+	
+	@Test
+	public void playerWithHighestRunsAndAverage() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_RUNS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.playerWithBestAvgAndMostRuns();
+		Assert.assertEquals("David Warner", player);
+	}
 }

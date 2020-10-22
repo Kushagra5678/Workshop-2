@@ -46,31 +46,27 @@ public class IplAnalyser {
 
 	public double calculateBattingAvg() throws IplAnalyserException {
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
-		double maxAvgScore = list.stream().filter(x -> !x.average.equals("-"))
-							 .map(x -> Double.parseDouble(x.average))
-							 .max(Double::compare).get();
+		double maxAvgScore = list.stream().filter(x -> !x.average.equals("-")).map(x -> Double.parseDouble(x.average))
+				.max(Double::compare).get();
 		ArrayList<IplRunsCSV> maxAvgList = (ArrayList<IplRunsCSV>) list.stream()
-										   .filter(x -> x.average.equals(Double.toString(maxAvgScore)))
-										   .collect(Collectors.toList());
+				.filter(x -> x.average.equals(Double.toString(maxAvgScore))).collect(Collectors.toList());
 		for (IplRunsCSV row : maxAvgList)
-			System.out.println("player with maximum average:\n"+row.player);
+			System.out.println("player with maximum average:\n" + row.player);
 		return maxAvgScore;
 	}
 
 	public double maximumStrikeRates() throws IplAnalyserException {
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
-		double maxStrikeRate = list.stream()
-								 .map(x -> (x.strikeRate))
-								 .max(Double::compare).get();
+		double maxStrikeRate = list.stream().map(x -> (x.strikeRate)).max(Double::compare).get();
 		ArrayList<IplRunsCSV> maxStrikeRateList = (ArrayList<IplRunsCSV>) list.stream()
-												  .filter(x -> Double.toString(x.strikeRate).equals(Double.toString(maxStrikeRate)))
-												  .collect(Collectors.toList());
+				.filter(x -> Double.toString(x.strikeRate).equals(Double.toString(maxStrikeRate)))
+				.collect(Collectors.toList());
 		System.out.println("Player with maximum strike rate: ");
 		for (IplRunsCSV row : maxStrikeRateList)
 			System.out.println(row.player);
 		return maxStrikeRate;
 	}
-	
+
 	public String cricketerWithMax6() throws IplAnalyserException {
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
 		ArrayList<IplRunsCSV> sortedMax6 = (ArrayList<IplRunsCSV>) list.stream()
@@ -93,23 +89,39 @@ public class IplAnalyser {
 
 	}
 
-	public String bestSRWith4s6s() throws IplAnalyserException{
+	public String bestSRWith4s6s() throws IplAnalyserException {
 		// TODO Auto-generated method stub
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
-		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>)list.stream().sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed())
+		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>) list.stream()
+				.sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed()).collect(Collectors.toList());
+		ArrayList<IplRunsCSV> result = (ArrayList<IplRunsCSV>) sortedSR
+				.stream().sorted(Comparator
+						.comparing(b -> ((IplRunsCSV) b).getSixes() * 6 + ((IplRunsCSV) b).getFours() * 4).reversed())
 				.collect(Collectors.toList());
-		ArrayList<IplRunsCSV> result = (ArrayList<IplRunsCSV>)sortedSR.stream().sorted(Comparator.comparing(b -> ((IplRunsCSV) b).getSixes() * 6 + ((IplRunsCSV) b).getFours() * 4).reversed())
-		.collect(Collectors.toList());
 		return result.get(0).player;
 	}
 
-	public String playerWithBestSRAndAvg() throws IplAnalyserException{
+	public String playerWithBestSRAndAvg() throws IplAnalyserException {
 		// TODO Auto-generated method stub
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
-		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>)list.stream().sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed())
+		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>) list.stream()
+				.sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed()).collect(Collectors.toList());
+
+		ArrayList<IplRunsCSV> sortedSRAndAvg = (ArrayList<IplRunsCSV>) sortedSR.stream()
+				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplRunsCSV) x).getAverage())).reversed())
 				.collect(Collectors.toList());
-		
-		ArrayList<IplRunsCSV> sortedSRAndAvg = (ArrayList<IplRunsCSV>)sortedSR.stream().sorted(Comparator.comparing(x -> Double.parseDouble(((IplRunsCSV) x).getAverage())).reversed()).collect(Collectors.toList());
 		return sortedSRAndAvg.get(0).player;
+	}
+
+	public String playerWithBestAvgAndMostRuns() throws IplAnalyserException {
+		// TODO Auto-generated method stub
+		ArrayList<IplRunsCSV> list = cSVDataLoader();
+		ArrayList<IplRunsCSV> sortedAvg = (ArrayList<IplRunsCSV>) list.stream()
+				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplRunsCSV) x).getAverage())).reversed())
+				.collect(Collectors.toList());
+		ArrayList<IplRunsCSV> sortedRunsAndAvg = (ArrayList<IplRunsCSV>) sortedAvg.stream()
+				.sorted(Comparator.comparing(IplRunsCSV::getRuns).reversed()).collect(Collectors.toList());
+		System.out.println(sortedRunsAndAvg.get(0).player);
+		return sortedRunsAndAvg.get(0).player;
 	}
 }

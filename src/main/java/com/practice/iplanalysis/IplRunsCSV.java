@@ -49,6 +49,9 @@ public class IplRunsCSV {
 	@CsvBindByName(column = "6s", required = true)
 	public int sixes;
 	
+	public int getRuns() {
+		return runs;
+	}
 	public double getStrikeRate() {
 		return strikeRate;
 	}
