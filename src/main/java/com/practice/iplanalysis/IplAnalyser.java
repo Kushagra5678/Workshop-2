@@ -102,4 +102,14 @@ public class IplAnalyser {
 		.collect(Collectors.toList());
 		return result.get(0).player;
 	}
+
+	public String playerWithBestSRAndAvg() throws IplAnalyserException{
+		// TODO Auto-generated method stub
+		ArrayList<IplRunsCSV> list = cSVDataLoader();
+		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>)list.stream().sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed())
+				.collect(Collectors.toList());
+		
+		ArrayList<IplRunsCSV> sortedSRAndAvg = (ArrayList<IplRunsCSV>)sortedSR.stream().sorted(Comparator.comparing(x -> Double.parseDouble(((IplRunsCSV) x).getAverage())).reversed()).collect(Collectors.toList());
+		return sortedSRAndAvg.get(0).player;
+	}
 }

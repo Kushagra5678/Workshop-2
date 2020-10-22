@@ -58,4 +58,12 @@ public class IplRunsCSV {
 	public int getFours() {
 		return fours;
 	}
+	public String getAverage() {
+		try {
+			Double.parseDouble(average);
+		} catch (NumberFormatException e) {
+			average = "0";
+		}
+		return average;
+	}
 }

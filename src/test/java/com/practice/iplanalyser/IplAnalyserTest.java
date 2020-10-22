@@ -54,4 +54,12 @@ public class IplAnalyserTest {
 		String player = iplAnalyser.bestSRWith4s6s();
 		Assert.assertEquals("Andre Russell", player);
 	}
+	
+	@Test
+	public void playerWithBestSRAndAverage() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_RUNS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.playerWithBestSRAndAvg();
+		Assert.assertEquals("MS Dhoni", player);
+	}
 }
