@@ -66,7 +66,7 @@ public class IplBowling {
 		try {
 			Double.parseDouble(average);
 		} catch (NumberFormatException e) {
-			return "1000000";
+			return "10000";
 		}
 		return average;
 	}

@@ -43,7 +43,7 @@ public class IplAnalyser {
 		}
 
 	}
-	
+
 	public ArrayList<IplBowling> cSVDataLoaderBowling() throws IplAnalyserException {
 
 		ArrayList<IplBowling> list = new ArrayList<>();
@@ -148,11 +148,22 @@ public class IplAnalyser {
 		return sortedRunsAndAvg.get(0).player;
 	}
 
-	public String playerWithTopBowlingAvg() throws IplAnalyserException{
+	public String playerWithTopBowlingAvg() throws IplAnalyserException {
 		// TODO Auto-generated method stub
 		ArrayList<IplBowling> list = cSVDataLoaderBowling();
-		ArrayList<IplBowling> sortedAvg = (ArrayList<IplBowling>) list.stream().sorted(Comparator.comparing(x -> Double.parseDouble(((IplBowling) x).getAverage()))).collect(Collectors.toList());
-		System.out.println("ddddddd"+sortedAvg.get(0).getPlayer());
+		ArrayList<IplBowling> sortedAvg = (ArrayList<IplBowling>) list.stream()
+				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplBowling) x).getAverage())))
+				.collect(Collectors.toList());
 		return sortedAvg.get(0).getPlayer();
+	}
+
+	public String playerWithTopBowlingSR() throws IplAnalyserException{
+		// TODO Auto-generated method stub
+		ArrayList<IplBowling> list = cSVDataLoaderBowling();
+		ArrayList<IplBowling> sortedSR = (ArrayList<IplBowling>) list.stream()
+				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplBowling) x).getStrikeRate())))
+				.collect(Collectors.toList());
+		System.out.println("ddddd"+sortedSR.get(0).getPlayer());
+		return sortedSR.get(0).getPlayer();
 	}
 }

@@ -79,4 +79,12 @@ public class IplAnalyserTest {
 		String player = iplAnalyser.playerWithTopBowlingAvg();
 		Assert.assertEquals("Anukul Roy", player);
 	}
+	
+	@Test
+	public void playerWithTopBowlingSR() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_WICKETS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.playerWithTopBowlingSR();
+		Assert.assertEquals("Alzarri Joseph", player);
+	}
 }
