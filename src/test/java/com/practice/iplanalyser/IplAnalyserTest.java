@@ -12,6 +12,7 @@ import com.practice.iplanalysis.IplAnalyserException;
 public class IplAnalyserTest {
 	
 	public static final String FILE_PATH_RUNS = "E:\\Capg_training\\eclipse_work\\IplAnalysis\\MostRuns.csv";
+	public static final String FILE_PATH_WICKETS = "E:\\Capg_training\\eclipse_work\\IplAnalysis\\MostWickets.csv";
 	
 	@Test
 	public void givenIPLFile_FindMaxAvgTest() throws IplAnalyserException {
@@ -69,5 +70,13 @@ public class IplAnalyserTest {
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.playerWithBestAvgAndMostRuns();
 		Assert.assertEquals("David Warner", player);
+	}
+	
+	@Test
+	public void playerWithTopBowlingAvg() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_WICKETS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.playerWithTopBowlingAvg();
+		Assert.assertEquals("Anukul Roy", player);
 	}
 }
