@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
@@ -59,10 +60,10 @@ public class IplAnalyser {
 	public double maximumStrikeRates() throws IplAnalyserException {
 		ArrayList<IplRunsCSV> list = cSVDataLoader();
 		double maxStrikeRate = list.stream()
-								 .map(x -> Double.parseDouble(x.strikeRate))
+								 .map(x -> (x.strikeRate))
 								 .max(Double::compare).get();
 		ArrayList<IplRunsCSV> maxStrikeRateList = (ArrayList<IplRunsCSV>) list.stream()
-												  .filter(x -> x.strikeRate.equals(Double.toString(maxStrikeRate)))
+												  .filter(x -> Double.toString(x.strikeRate).equals(Double.toString(maxStrikeRate)))
 												  .collect(Collectors.toList());
 		System.out.println("Player with maximum strike rate: ");
 		for (IplRunsCSV row : maxStrikeRateList)
@@ -90,5 +91,15 @@ public class IplAnalyser {
 		System.out.println(sortedMax4.get(0).player + " with total number of fours " + sortedMax4.get(0).fours);
 		return sortedMax4.get(0).player;
 
+	}
+
+	public String bestSRWith4s6s() throws IplAnalyserException{
+		// TODO Auto-generated method stub
+		ArrayList<IplRunsCSV> list = cSVDataLoader();
+		ArrayList<IplRunsCSV> sortedSR = (ArrayList<IplRunsCSV>)list.stream().sorted(Comparator.comparing(IplRunsCSV::getStrikeRate).reversed())
+				.collect(Collectors.toList());
+		ArrayList<IplRunsCSV> result = (ArrayList<IplRunsCSV>)sortedSR.stream().sorted(Comparator.comparing(b -> ((IplRunsCSV) b).getSixes() * 6 + ((IplRunsCSV) b).getFours() * 4).reversed())
+		.collect(Collectors.toList());
+		return result.get(0).player;
 	}
 }

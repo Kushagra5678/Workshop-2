@@ -32,18 +32,26 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithMaximum6Test() throws IplAnalyserException {
+	public void playerWithMaximum6sTest() throws IplAnalyserException {
 		Path pathname = Paths.get(FILE_PATH_RUNS);
-		IplAnalyser iplLeagueAnalyser = new IplAnalyser(pathname);
-		String playerWithMax6 = iplLeagueAnalyser.cricketerWithMax6();
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String playerWithMax6 = iplAnalyser.cricketerWithMax6();
 		Assert.assertEquals("Andre Russell", playerWithMax6);
 	}
 
 	@Test
-	public void playerWithMaximum4Test() throws IplAnalyserException {
+	public void playerWithMaximum4sTest() throws IplAnalyserException {
 		Path pathname = Paths.get(FILE_PATH_RUNS);
-		IplAnalyser iplLeagueAnalyser = new IplAnalyser(pathname);
-		String playerWithMax4 = iplLeagueAnalyser.cricketerWithMax4();
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String playerWithMax4 = iplAnalyser.cricketerWithMax4();
 		Assert.assertEquals("Shikhar Dhawan", playerWithMax4);
+	}
+	
+	@Test
+	public void playerWithBestSRWith4s6s() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_RUNS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.bestSRWith4s6s();
+		Assert.assertEquals("Andre Russell", player);
 	}
 }

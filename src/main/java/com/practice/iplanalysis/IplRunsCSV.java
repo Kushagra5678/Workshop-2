@@ -35,7 +35,7 @@ public class IplRunsCSV {
 	public int ballsFaced;
 
 	@CsvBindByName(column = "SR", required = true)
-	public String strikeRate;
+	public double strikeRate;
 
 	@CsvBindByName(column = "100", required = true)
 	public int hundreds;
@@ -48,4 +48,14 @@ public class IplRunsCSV {
 
 	@CsvBindByName(column = "6s", required = true)
 	public int sixes;
+	
+	public double getStrikeRate() {
+		return strikeRate;
+	}
+	public int getSixes() {
+		return sixes;
+	}
+	public int getFours() {
+		return fours;
+	}
 }
