@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
@@ -67,5 +68,27 @@ public class IplAnalyser {
 		for (IplRunsCSV row : maxStrikeRateList)
 			System.out.println(row.player);
 		return maxStrikeRate;
+	}
+	
+	public String cricketerWithMax6() throws IplAnalyserException {
+		ArrayList<IplRunsCSV> list = cSVDataLoader();
+		ArrayList<IplRunsCSV> sortedMax6 = (ArrayList<IplRunsCSV>) list.stream()
+				.sorted((player1, player2) -> Integer.compare(player1.sixes, player2.sixes))
+				.collect(Collectors.toList());
+		Collections.reverse(sortedMax6);
+		System.out.println("Player with maximum sixes is");
+		System.out.println(sortedMax6.get(0).player + " with total number of sixes " + sortedMax6.get(0).sixes);
+		return sortedMax6.get(0).player;
+	}
+
+	public String cricketerWithMax4() throws IplAnalyserException {
+		ArrayList<IplRunsCSV> list = cSVDataLoader();
+		ArrayList<IplRunsCSV> sortedMax4 = (ArrayList<IplRunsCSV>) list.stream().sorted((player1, player2) -> {
+			return player2.fours - player1.fours;
+		}).collect(Collectors.toList());
+		System.out.println("Players with maximum number of 4s is");
+		System.out.println(sortedMax4.get(0).player + " with total number of fours " + sortedMax4.get(0).fours);
+		return sortedMax4.get(0).player;
+
 	}
 }
