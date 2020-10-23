@@ -163,7 +163,16 @@ public class IplAnalyser {
 		ArrayList<IplBowling> sortedSR = (ArrayList<IplBowling>) list.stream()
 				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplBowling) x).getStrikeRate())))
 				.collect(Collectors.toList());
-		System.out.println("ddddd"+sortedSR.get(0).getPlayer());
+		//System.out.println("ddddd"+sortedSR.get(0).getPlayer());
 		return sortedSR.get(0).getPlayer();
+	}
+
+	public String playerWithBestEconomy() throws IplAnalyserException{
+		// TODO Auto-generated method stub
+		ArrayList<IplBowling> list = cSVDataLoaderBowling();
+		ArrayList<IplBowling> sortedEconomy = (ArrayList<IplBowling>) list.stream()
+				.sorted(Comparator.comparing(x -> ((IplBowling) x).getEconomy()))
+				.collect(Collectors.toList());
+		return sortedEconomy.get(0).getPlayer();
 	}
 }

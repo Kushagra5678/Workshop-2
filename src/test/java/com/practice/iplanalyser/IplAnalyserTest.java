@@ -49,7 +49,7 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithBestSRWith4s6s() throws IplAnalyserException{
+	public void playerWithBestSRWith4s6sTest() throws IplAnalyserException{
 		Path pathname = Paths.get(FILE_PATH_RUNS);
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.bestSRWith4s6s();
@@ -57,7 +57,7 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithBestSRAndAverage() throws IplAnalyserException{
+	public void playerWithBestSRAndAverageTest() throws IplAnalyserException{
 		Path pathname = Paths.get(FILE_PATH_RUNS);
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.playerWithBestSRAndAvg();
@@ -65,7 +65,7 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithHighestRunsAndAverage() throws IplAnalyserException{
+	public void playerWithHighestRunsAndAverageTest() throws IplAnalyserException{
 		Path pathname = Paths.get(FILE_PATH_RUNS);
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.playerWithBestAvgAndMostRuns();
@@ -73,7 +73,7 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithTopBowlingAvg() throws IplAnalyserException{
+	public void playerWithTopBowlingAvgTest() throws IplAnalyserException{
 		Path pathname = Paths.get(FILE_PATH_WICKETS);
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.playerWithTopBowlingAvg();
@@ -81,10 +81,18 @@ public class IplAnalyserTest {
 	}
 	
 	@Test
-	public void playerWithTopBowlingSR() throws IplAnalyserException{
+	public void playerWithTopBowlingSRTest() throws IplAnalyserException{
 		Path pathname = Paths.get(FILE_PATH_WICKETS);
 		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
 		String player = iplAnalyser.playerWithTopBowlingSR();
 		Assert.assertEquals("Alzarri Joseph", player);
+	}
+	
+	@Test
+	public void playerWithBestEconomyTest() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_WICKETS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.playerWithBestEconomy();
+		Assert.assertEquals("Shivam Dube", player);
 	}
 }
