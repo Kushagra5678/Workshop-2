@@ -3,31 +3,31 @@ package com.practice.iplanalysis;
 import com.opencsv.bean.CsvBindByName;
 
 public class IplBowling {
-	@CsvBindByName(column = "POS")
+	@CsvBindByName(column = "POS", required = true)
 	private int position;
-	@CsvBindByName(column = "PLAYER")
+	@CsvBindByName(column = "PLAYER", required = true)
 	private String player;
-	@CsvBindByName(column = "MAT")
+	@CsvBindByName(column = "MAT", required = true)
 	private int match;
-	@CsvBindByName(column = "Inns")
+	@CsvBindByName(column = "Inns", required = true)
 	private int innings;
-	@CsvBindByName(column = "Ov")
+	@CsvBindByName(column = "Ov", required = true)
 	private double overs;
-	@CsvBindByName(column = "Runs")
+	@CsvBindByName(column = "Runs", required = true)
 	private int runs;
-	@CsvBindByName(column = "Wkts")
+	@CsvBindByName(column = "Wkts", required = true)
 	private int wickets;
-	@CsvBindByName(column = "BBI")
+	@CsvBindByName(column = "BBI", required = true)
 	private int bbi;
-	@CsvBindByName(column = "Avg")
+	@CsvBindByName(column = "Avg", required = true)
 	private String average;
-	@CsvBindByName(column = "Econ")
+	@CsvBindByName(column = "Econ", required = true)
 	private double economy;
-	@CsvBindByName(column = "SR")
+	@CsvBindByName(column = "SR", required = true)
 	private String strikeRate;
-	@CsvBindByName(column = "4w")
+	@CsvBindByName(column = "4w", required = true)
 	private int fourWickets;
-	@CsvBindByName(column = "5w")
+	@CsvBindByName(column = "5w", required = true)
 	private int fiveWickets;
 
 	public int getPosition() {

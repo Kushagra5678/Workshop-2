@@ -175,4 +175,18 @@ public class IplAnalyser {
 				.collect(Collectors.toList());
 		return sortedEconomy.get(0).getPlayer();
 	}
+
+	public String bowlerWithBestSRWith4w5w() throws IplAnalyserException{
+		// TODO Auto-generated method stub
+		ArrayList<IplBowling> list = cSVDataLoaderBowling();
+		ArrayList<IplBowling> sortedSR = (ArrayList<IplBowling>) list.stream()
+				.sorted(Comparator.comparing(x -> Double.parseDouble(((IplBowling) x).getStrikeRate())))
+				.collect(Collectors.toList());
+		ArrayList<IplBowling> result = (ArrayList<IplBowling>) sortedSR
+				.stream().sorted(Comparator
+						.comparing(b -> ((IplBowling) b).getFourWickets() + ((IplBowling) b).getFiveWickets()).reversed())
+				.collect(Collectors.toList());
+		//System.out.println(result.get(0).getPlayer());
+		return result.get(0).getPlayer();
+	}
 }

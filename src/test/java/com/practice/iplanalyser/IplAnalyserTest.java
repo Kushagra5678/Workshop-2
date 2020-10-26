@@ -95,4 +95,12 @@ public class IplAnalyserTest {
 		String player = iplAnalyser.playerWithBestEconomy();
 		Assert.assertEquals("Shivam Dube", player);
 	}
+	
+	@Test
+	public void bowlerWithBestSRWith4w5wTest() throws IplAnalyserException{
+		Path pathname = Paths.get(FILE_PATH_WICKETS);
+		IplAnalyser iplAnalyser = new IplAnalyser(pathname);
+		String player = iplAnalyser.bowlerWithBestSRWith4w5w();
+		Assert.assertEquals("Kagiso Rabada", player);
+	}
 }
